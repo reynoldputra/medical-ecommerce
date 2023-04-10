@@ -34,8 +34,6 @@ export default {
   
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  // Output directory for the build files
-  buildDir: 'dist',
 
   // Generate static files for deployment
   generate: {
