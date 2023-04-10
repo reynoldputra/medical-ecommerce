@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#EBF0FF] text-[#031550] relative w-full h-screen">
+  <div class="bg-[#EBF0FF] text-[#031550] relative w-full min-h-screen">
     <div class="flex h-screen justify-center">
       <div class="w-1/2 flex justify-center flex-col h-full px-32">
         <div class="font-inter font-[400px] text-[48px] leading-[58px]">
@@ -20,14 +20,14 @@
     </div>
 
     <div class="bg-[#EBF0FF] flex w-full justify-center pb-20">
-      <div class="bg-white w-full mx-32 px-8 flex">
+      <div class="bg-white rounded-md w-full mx-32 px-8 flex">
         <input
           type="text"
           placeholder="Search your product ..."
-          class="input bg-white w-full h-[90px]"
+          class="input bg-white w-full h-20"
         />
         <div class="flex ml-auto gap-4 items-center justify-center">
-          <button class="btn bg-[#93AAF8]">
+          <button class="btn h-12 w-12 flex justify-center items-center rounded-md bg-[#93AAF8]">
             <svg
               width="15"
               height="20"
@@ -41,7 +41,7 @@
               />
             </svg>
           </button>
-          <button class="btn bg-[#93AAF8] text-white">Search</button>
+          <button class="btn bg-[#93AAF8] font-bold h-12 w-32 rounded-md text-white">Search</button>
         </div>
       </div>
     </div>

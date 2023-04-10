@@ -11,37 +11,49 @@
 
 <script>
 import { ref } from 'vue'
-import NavbarView from '@/components/NavbarView.vue'
-import HomePageview from '@/components/HomePageView.vue'
+import NavbarView from '@/components/navbarView.vue'
+import HomePageview from '@/components/homepageView.vue'
 
 export default {
   name: 'IndexPage',
   components: {
     NavbarView,
     HomePageview,
-  }
-}
+  },
+  setup() {
+    const isRecording = ref(false)
+    const recognition = ref(null)
+    const transcript = ref('')
 
-const isRecording = ref(false)
-const recognition = ref(null)
-const transcript = ref('')
-
-function startRecording() {
-  if (process.client) {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition
-    recognition.value = new SpeechRecognition()
-    recognition.value.start()
-    recognition.value.onresult = (event) => {
-      transcript.value = event.results[0][0].transcript
+    function startRecording() {
+      if (process.client) {
+        console.log("test")
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition
+        recognition.value = new SpeechRecognition()
+        recognition.value.start()
+        recognition.value.onresult = (event) => {
+          console.log(event)
+          transcript.value = event.results[0][0].transcript
+        }
+        // Use the recognition object here
+      }
     }
-    // Use the recognition object here
+
+    function stopRecording() {
+      isRecording.value = false
+      recognition.value.abort()
+    }
+
+    return {
+      isRecording,
+      recognition,
+      transcript,
+      startRecording,
+      stopRecording
+    }
   }
 }
 
-function stopRecording() {
-  isRecording.value = false
-  recognition.value.abort()
-}
 
 </script>
