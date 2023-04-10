@@ -18,7 +18,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/assets/css/main.css'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -33,6 +33,19 @@ export default {
   modules: ['@nuxtjs/tailwindcss'],
   
   // Build Configuration: https://go.nuxtjs.dev/config-build
+<<<<<<< HEAD
   build: {},
 
+=======
+  build: {
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      },
+    },
+  },
+>>>>>>> eb54f36 (update box)
 }
