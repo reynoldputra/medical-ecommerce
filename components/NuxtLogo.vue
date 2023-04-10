@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <svg
     class="nuxt-logo"
     viewBox="0 0 45 30"
@@ -16,4 +16,4 @@
 .nuxt-logo {
   height: 180px;
 }
-</style>
+</style> -->
