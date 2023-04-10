@@ -1,5 +1,7 @@
 <template>
   <div>
+    <NavbarView />
+    <HomePageview />
     <div class="text-5xl">Hello World</div>
     <button @click="startRecording">Start</button>
     <button @click="stopRecording">Stop</button>
@@ -7,8 +9,18 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { ref } from 'vue'
+import NavbarView from '@/components/NavbarView.vue'
+import HomePageview from '@/components/HomePageView.vue'
+
+export default {
+  name: 'IndexPage',
+  components: {
+    NavbarView,
+    HomePageview,
+  }
+}
 
 const isRecording = ref(false)
 const recognition = ref(null)
@@ -31,4 +43,5 @@ function stopRecording() {
   isRecording.value = false
   recognition.value.abort()
 }
+
 </script>
