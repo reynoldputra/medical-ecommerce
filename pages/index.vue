@@ -3,7 +3,6 @@
     <NavbarView />
     <HomePageview />
     <div class="bg-softblue">
-      <hr class="my-20 border-t-1" />
       <div class="mx-auto max-w-7xl grid grid-cols-3 gap-8 py-24 px-24 sm:px-32">
         <div
           class="group shadow-xl p-6 bg-white hover:bg-hoverblue rounded-md transform active:scale-50 transition-transform"
