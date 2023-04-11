@@ -1,8 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{vue,js}'],
+  plugins: [require('daisyui')],
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+  ],
   theme: {
     extend: {},
+    colors: {
+      softblue: '#F6F8FF',
+      hoverblue: '#93AAF8',
+      fontblue: '#7292FF',
+    },
   },
-  plugins: [require('daisyui')],
+  variants: {
+    extend: {
+      scale: ['active'],
+    },
+  },
 }
