@@ -33,10 +33,6 @@ export default {
   modules: ['@nuxtjs/tailwindcss'],
   
   // Build Configuration: https://go.nuxtjs.dev/config-build
-<<<<<<< HEAD
-  build: {},
-
-=======
   build: {
     postcss: {
       postcssOptions: {
@@ -47,5 +43,4 @@ export default {
       },
     },
   },
->>>>>>> eb54f36 (update box)
 }
