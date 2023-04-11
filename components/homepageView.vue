@@ -22,12 +22,13 @@
     <div class="bg-[#EBF0FF] flex w-full justify-center pb-20">
       <div class="bg-white rounded-md w-full mx-32 px-8 flex">
         <input
+          v-model="transcript"
           type="text"
           placeholder="Search your product ..."
           class="input bg-white w-full h-20"
         />
         <div class="flex ml-auto gap-4 items-center justify-center">
-          <button class="btn h-12 w-12 flex justify-center items-center rounded-md bg-[#93AAF8]">
+          <button class="btn h-12 w-12 flex justify-center items-center rounded-md bg-[#93AAF8]" @click="startRecording" >
             <svg
               width="15"
               height="20"
@@ -49,7 +50,39 @@
 </template>
 
 <script>
+  import { ref } from 'vue'
 export default {
   name: 'HomePageView',
+  setup() {
+    const isRecording = ref(false)
+    const recognition = ref(null)
+    const transcript = ref('')
+
+    function startRecording() {
+      if (process.client) {
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition
+        recognition.value = new SpeechRecognition()
+        recognition.value.start()
+        recognition.value.onresult = (event) => {
+          transcript.value = event.results[0][0].transcript
+        }
+        // Use the recognition object here
+      }
+    }
+
+    function stopRecording() {
+      isRecording.value = false
+      recognition.value.abort()
+    }
+
+    return {
+      isRecording,
+      recognition,
+      transcript,
+      startRecording,
+      stopRecording
+    }
+  }
 }
 </script>
