@@ -13,7 +13,7 @@
         </div>
       </div>
       <img
-        src="/gambar.png"
+        src="../static/gambar.png"
         alt="Deskripsi gambar"
         class="w-[472px] h-[300px] m-auto"
       />
