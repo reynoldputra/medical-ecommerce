@@ -25,10 +25,18 @@
           v-model="transcript"
           type="text"
           placeholder="Search your product ..."
-          class="input bg-white w-full h-20"
+          class="input w-full h-20 bg-white focus:outline-none"
+          style="background-color: white !important"
         />
-        <div class="flex ml-auto gap-4 items-center justify-center">
-          <button class="btn h-12 w-12 flex justify-center items-center rounded-md bg-[#93AAF8]" @click="startRecording" >
+
+        <div
+          class="flex ml-auto gap-4 items-center justify-center bg-white px-4 rounded-md"
+          style="background-color: white !important"
+        >
+          <button
+            class="btn h-12 w-12 flex justify-center items-center rounded-md bg-[#93AAF8]"
+            @click="startRecording"
+          >
             <svg
               width="15"
               height="20"
@@ -42,7 +50,12 @@
               />
             </svg>
           </button>
-          <button class="btn bg-[#93AAF8] font-bold h-12 w-32 rounded-md text-white">Search</button>
+          <button
+            class="btn bg-[#93AAF8] font-bold h-12 w-32 rounded-md"
+            style="color: white"
+          >
+            Search
+          </button>
         </div>
       </div>
     </div>
@@ -50,7 +63,7 @@
 </template>
 
 <script>
-  import { ref } from 'vue'
+import { ref } from 'vue'
 export default {
   name: 'HomePageView',
   setup() {
@@ -81,8 +94,8 @@ export default {
       recognition,
       transcript,
       startRecording,
-      stopRecording
+      stopRecording,
     }
-  }
+  },
 }
 </script>
