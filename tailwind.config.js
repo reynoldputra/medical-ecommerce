@@ -9,12 +9,13 @@ module.exports = {
     './nuxt.config.{js,ts}',
   ],
   theme: {
-    extend: {},
-    colors: {
-      softblue: '#F6F8FF',
-      hoverblue: '#93AAF8',
-      fontblue: '#7292FF',
-    },
+    extend: {
+      colors: {
+        softblue: '#F6F8FF',
+        hoverblue: '#93AAF8',
+        fontblue: '#7292FF',
+      }
+    }
   },
   variants: {
     extend: {

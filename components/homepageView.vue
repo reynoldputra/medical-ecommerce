@@ -42,7 +42,7 @@
               />
             </svg>
           </button>
-          <button class="btn bg-[#93AAF8] font-bold h-12 w-32 rounded-md text-white">Search</button>
+          <button @click="handleSubmit" class="btn bg-[#93AAF8] font-bold h-12 w-32 rounded-md text-white">Search</button>
         </div>
       </div>
     </div>
@@ -51,38 +51,60 @@
 
 <script>
   import { ref } from 'vue'
-export default {
-  name: 'HomePageView',
-  setup() {
-    const isRecording = ref(false)
-    const recognition = ref(null)
-    const transcript = ref('')
+  import { useProductStore } from '~/store/product'
 
-    function startRecording() {
-      if (process.client) {
-        const SpeechRecognition =
-          window.SpeechRecognition || window.webkitSpeechRecognition
-        recognition.value = new SpeechRecognition()
-        recognition.value.start()
-        recognition.value.onresult = (event) => {
-          transcript.value = event.results[0][0].transcript
+  export default {
+    name: 'HomePageView',
+    setup() {
+      const store = useProductStore()
+      const { getKeyword, getProduct } = store
+      const isRecording = ref(false)
+      const recognition = ref(null)
+      const transcript = ref('')
+
+      function startRecording() {
+        if (process.client) {
+          const SpeechRecognition =
+            window.SpeechRecognition || window.webkitSpeechRecognition
+          recognition.value = new SpeechRecognition()
+          recognition.value.start()
+          recognition.value.onresult = (event) => {
+            transcript.value = event.results[0][0].transcript
+          }
         }
-        // Use the recognition object here
+      }
+
+      function stopRecording() {
+        isRecording.value = false
+        recognition.value.abort()
+      }
+
+      async function handleSubmit() {
+        const input = transcript.value
+        console.log(input)
+        const keyword = await getKeyword(input)
+        console.log(keyword)
+        const products = await getProduct()
+        console.log(products)
+      }
+
+      function sortProduct(){
+      //kerjain disini nap
+
+      }
+
+      function getLocation() {
+
+      }
+
+      return {
+        isRecording,
+        recognition,
+        transcript,
+        startRecording,
+        stopRecording,
+        handleSubmit
       }
     }
-
-    function stopRecording() {
-      isRecording.value = false
-      recognition.value.abort()
-    }
-
-    return {
-      isRecording,
-      recognition,
-      transcript,
-      startRecording,
-      stopRecording
-    }
   }
-}
 </script>
